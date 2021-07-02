@@ -1,0 +1,18 @@
+{
+  "name": "orders",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "latest",
+    "debug": "latest",
+    "dotenv": "latest",
+    "express": "latest",
+    "http-errors": "latest",
+    "less-middleware": "latest",
+    "morgan": "latest",
+    "pug": "latest"
+  }
+}
