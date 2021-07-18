@@ -1,18 +1,21 @@
 FROM node:14
 
-# Create app directory
-WORKDIR /usr/src/app
+# set working direction
+WORKDIR /app
 
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 COPY package*.json ./
 
-RUN npm install
+RUN npm i
 # If you are building your code for production
 # RUN npm ci --only=production
 
-# Bundle app source
-COPY . .
+# add app
+COPY . ./
 
 EXPOSE 4000
-CMD [ "node", "start" ]
+# start app
+CMD ["npm", "start"]
