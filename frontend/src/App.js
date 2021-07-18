@@ -1,9 +1,11 @@
 import './App.css';
 import CardUI from "./components/CardUI"
-import data from "./services/test-service"
+import {useAxios} from "use-axios-client";
 
 function App() {
-  return (
+    let { data } = useAxios({url:'http://localhost:8081/api/query/item',method:'GET'})
+    console.log(data)
+    return (
     <div>
       <div className="navbar justify-content-center">
         <input
@@ -17,10 +19,10 @@ function App() {
       </div>
       <div className="container-fluid d-flex justify-content-between">
           <div className="row">
-              {data.cardData.map((item, index) => {
+              {!data?null:data.map(data => {
                   return(
                       <div className="col-md-3">
-                          <CardUI key={index} title={item.title} index={index}/>
+                          <CardUI key={data.ID} data={data}/>
                       </div>
                   )
               })}

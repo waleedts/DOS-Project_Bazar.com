@@ -8,9 +8,11 @@ const createError = require('http-errors');
 router.patch('/item/:item', (req, res,next) =>{
     let query =""
     let params=""
+    // Returns an error when a wrong value is entered
     if(req.body.cost<0 || req.body.InStock <=0){
         res.json(createError(406))
     }
+    // Checks if the body has a new cost or stock or both
     if(req.body.cost){
         query="UPDATE 'Catalog' set cost = ? where ID=?"
         params= [req.body.cost, req.params.item];
@@ -21,9 +23,11 @@ router.patch('/item/:item', (req, res,next) =>{
         query="UPDATE 'Catalog' set cost=?,InStock=? where ID=?"
         params= [req.body.cost,req.body.InStock, req.params.item];
     }
+    // Database query, then checking for an error and returning the correct response
     db.run(query,params, (error,row) => {
         if(error){
             next(error)
+            return
         }
         res.json(row)
     });

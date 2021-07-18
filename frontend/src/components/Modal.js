@@ -3,7 +3,7 @@ import { useSpring, animated } from 'react-spring';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import img1 from "../assets/img1.jpg"
-
+import axios from "axios";
 const Background = styled.div`
   position: absolute;
   top: 0;
@@ -67,7 +67,7 @@ const CloseModalButton = styled(MdClose)`
   z-index: 10;
 `;
 
-export const Modal = ({ showModal, setShowModal ,title}) => {
+export const Modal = ({ showModal, setShowModal ,data}) => {
     const modalRef = useRef();
 
     const animation = useSpring({
@@ -101,7 +101,9 @@ export const Modal = ({ showModal, setShowModal ,title}) => {
         },
         [keyPress]
     );
-
+    const purchase = () =>{
+        axios.post('http://localhost:8082/api/purchase/item/'+data.ID)
+    }
     return (
         <>
             {showModal ? (
@@ -110,9 +112,10 @@ export const Modal = ({ showModal, setShowModal ,title}) => {
                         <ModalWrapper showModal={showModal}>
                             <ModalImg src={img1} alt='Random image' />
                             <ModalContent>
-                                <h1>this book name is {title}</h1>
-                                <p>Get exclusive access to our next launch.</p>
-                                <button>Join Now</button>
+                                <h1>this book name is {data.name}</h1>
+                                <p>Price:{data.cost}</p>
+                                <p>topic:{data.topic}</p>
+                                <button onClick={purchase}>Buy</button>
                             </ModalContent>
                             <CloseModalButton
                                 aria-label='Close modal'

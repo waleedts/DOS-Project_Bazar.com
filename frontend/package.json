@@ -6,14 +6,17 @@
     "@testing-library/jest-dom": "latest",
     "@testing-library/react": "latest",
     "@testing-library/user-event": "latest",
+    "axios": "latest",
     "bootstrap": "^5.0.2",
     "react": "latest",
     "react-bootstrap": "^1.6.1",
+    "react-bootstrap-sweetalert": "^5.2.0",
     "react-dom": "latest",
     "react-icons": "^4.2.0",
     "react-scripts": "latest",
     "react-spring": "^9.2.4",
     "styled-components": "^5.3.0",
+    "use-axios-client": "latest",
     "web-vitals": "latest"
   },
   "scripts": {
