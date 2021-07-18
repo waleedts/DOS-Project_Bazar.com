@@ -2,7 +2,7 @@
 The Distributed Operating Systems Course Project which is a Multi-tier Online Book Store called Bazar.com
 ## How to run
 - You need a Docker Client to run this program,[Docker](https://www.docker.com/get-started)
-- Navigate to the project directory using the terminal
+- Navigate to the project home directory using the terminal
 - The docker client has Docker Compose included so using the terminal run the command
 `docker-compose up`
 - The three services should be running
