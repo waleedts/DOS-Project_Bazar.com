@@ -2,11 +2,15 @@ const express = require('express');
 const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('./database/Catalog.sqlite')
 const router = express.Router();
+const createError = require('http-errors');
 
 
 router.patch('/item/:item', (req, res,next) =>{
     let query =""
     let params=""
+    if(req.body.cost<0 || req.body.InStock <=0){
+        res.json(createError(406))
+    }
     if(req.body.cost){
         query="UPDATE 'Catalog' set cost = ? where ID=?"
         params= [req.body.cost, req.params.item];
