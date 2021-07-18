@@ -1,0 +1,33 @@
+services:
+  catalog:
+    image: bazar.com/catalog:latest
+    build:
+      context: ./Catalog
+    command: ['node', './bin/www']
+    ports:
+      - 8081:3000
+    expose:
+      - 3000
+  orders:
+    image: bazar.com/orders:latest
+    build:
+      context: ./Orders
+    command: ['node', './bin/www']
+    ports:
+      - 8082:3000
+    links:
+      - catalog
+    expose:
+      - 3000
+  frontend:
+    image: bazar.com/frontend:latest
+    build:
+      context: ./frontend
+    command: [ 'react-scripts', 'start' ]
+    ports:
+      - 8080:3000
+    links:
+      - catalog
+      - orders
+    expose:
+      - 3000
