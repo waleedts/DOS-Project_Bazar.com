@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "axios": "latest",
     "cookie-parser": "latest",
     "debug": "latest",
     "dotenv": "latest",
@@ -13,6 +14,7 @@
     "http-errors": "latest",
     "less-middleware": "latest",
     "morgan": "latest",
-    "pug": "latest"
+    "pug": "latest",
+    "sqlite3": "latest"
   }
 }

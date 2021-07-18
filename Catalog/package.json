@@ -13,6 +13,7 @@
     "http-errors": "latest",
     "less-middleware": "latest",
     "morgan": "latest",
-    "pug": "latest"
+    "pug": "latest",
+    "sqlite3": "latest"
   }
 }
