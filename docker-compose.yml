@@ -1,4 +1,13 @@
 services:
+  cache:
+    image: bazar.com/cache:latest
+    build:
+      context: ./cache
+    command: [ 'node', './bin/www' ]
+    ports:
+      - 8083:3000
+    expose:
+      - 3000
   catalog:
     image: bazar.com/catalog:latest
     build:
